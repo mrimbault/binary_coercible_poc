@@ -2,7 +2,6 @@
 #include "ajbool_bc.h"
 #include "libpq/pqformat.h"
 #include "utils/builtins.h"
-#include "common/hashfn.h"
 
 /* matches boolean false */
 #define AJBOOL_BC_FALSE                 0

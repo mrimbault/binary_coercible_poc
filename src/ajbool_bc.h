@@ -11,8 +11,8 @@ typedef uint8 ajbool_bc;
 #define PG_GETARG_AJBOOL_BC(n)    DatumGetAjBoolBc(PG_GETARG_DATUM(n))
 #define PG_RETURN_AJBOOL_BC(x)    return AjBoolBcGetDatum(x)
  */
-#define PG_GETARG_AJBOOL_BC(n) ((ajbool_bc) PG_GETARG_BOOL(n))
-#define PG_RETURN_AJBOOL_BC(x) PG_RETURN_BOOL((char) (x))
+#define PG_GETARG_AJBOOL_BC(n) ((ajbool_bc) PG_GETARG_CHAR(n))
+#define PG_RETURN_AJBOOL_BC(x) PG_RETURN_CHAR((char) (x))
 
 Datum ajbool_bc_to_bool(PG_FUNCTION_ARGS);
 /* we don't define a cast function for bool->ajbool
