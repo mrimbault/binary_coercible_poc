@@ -8,11 +8,11 @@ SELECT i,
             WHEN 1 THEN false
     END)::bool
 FROM generate_series(1,1e4) i;
+
 -- alter table to new type
 SET client_min_messages = debug1;
-ALTER TABLE alter_test ALTER COLUMN state TYPE ajbool;
-DEBUG:  rewriting table "alter_test"
-DEBUG:  building index "alter_test_pkey" on table "alter_test" serially
-DEBUG:  index "alter_test_pkey" cannot use deduplication
+ALTER TABLE alter_test ALTER COLUMN state TYPE ajbool_bc;
 RESET client_min_messages;
+
 ROLLBACK;
+

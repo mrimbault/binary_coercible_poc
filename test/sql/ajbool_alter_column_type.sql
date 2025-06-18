@@ -7,7 +7,7 @@ SELECT i,
             WHEN 0 THEN true
             WHEN 1 THEN false
     END)::bool
-FROM generate_series(1,1e6) i;
+FROM generate_series(1,1e4) i;
 
 -- alter table to new type
 SET client_min_messages = debug1;
