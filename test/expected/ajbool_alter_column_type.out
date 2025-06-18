@@ -1,0 +1,18 @@
+BEGIN;
+-- setup table with data and index
+CREATE TABLE alter_test (i int, state bool, PRIMARY KEY (i, state));
+INSERT INTO alter_test
+SELECT i,
+    (CASE i%2
+            WHEN 0 THEN true
+            WHEN 1 THEN false
+    END)::bool
+FROM generate_series(1,1e6) i;
+-- alter table to new type
+SET client_min_messages = debug1;
+ALTER TABLE alter_test ALTER COLUMN state TYPE ajbool;
+DEBUG:  rewriting table "alter_test"
+DEBUG:  building index "alter_test_pkey" on table "alter_test" with request for 1 parallel workers
+DEBUG:  index "alter_test_pkey" cannot use deduplication
+RESET client_min_messages;
+ROLLBACK;
